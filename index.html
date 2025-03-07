@@ -56,6 +56,22 @@
         isRefreshing = false;
     });
 </script>
+        document.addEventListener("DOMContentLoaded", function() {
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    window.addEventListener("touchstart", function(event) {
+        touchStartY = event.touches[0].clientY;
+    });
+
+    window.addEventListener("touchend", function(event) {
+        touchEndY = event.changedTouches[0].clientY;
+        if (touchEndY - touchStartY > 150) { // إذا كان السحب للأسفل أكثر من 150px
+            window.location.reload(); // تحديث الصفحة
+        }
+    });
+});
+
 
 </body>
 </html>
