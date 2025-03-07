@@ -8,7 +8,6 @@
     <link rel="icon" href="logo.icon.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pulltorefreshjs/0.1.22/pulltorefresh.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -35,13 +34,26 @@
 
     </div>
 
-    <script src="script.js"></script>
-        <script>
-    PullToRefresh.init({
-        mainElement: 'body', // العنصر الأساسي للسحب
-        onRefresh: function() { 
-            location.reload(); // إعادة تحميل الصفحة عند السحب
+<script>
+    let startY = 0;
+    let isRefreshing = false;
+
+    document.addEventListener("touchstart", (e) => {
+        if (window.scrollY === 0) { 
+            startY = e.touches[0].clientY;
         }
+    });
+
+    document.addEventListener("touchmove", (e) => {
+        let moveY = e.touches[0].clientY;
+        if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) { 
+            isRefreshing = true;
+            location.reload(); 
+        }
+    });
+
+    document.addEventListener("touchend", () => {
+        isRefreshing = false;
     });
 </script>
 
