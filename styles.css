@@ -16,8 +16,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow: auto;  /* 🔥 بدل hidden بـ auto لتفعيل التمرير */
     position: relative;
+    -webkit-overflow-scrolling: touch; /* 🔥 لتحسين السحب في الهواتف */
+}
+
 }
 
 /* جعل حرف Z يملأ الخلفية بالكامل */
