@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+    <button onclick="location.reload();">إعادة تحميل الصفحة</button>
     <meta charset="UTF-8">
     <meta thhp-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,44 +35,6 @@
 
     </div>
 
-<script>
-    let startY = 0;
-    let isRefreshing = false;
-
-    document.addEventListener("touchstart", (e) => {
-        if (window.scrollY === 0) { 
-            startY = e.touches[0].clientY;
-        }
-    });
-
-    document.addEventListener("touchmove", (e) => {
-        let moveY = e.touches[0].clientY;
-        if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) { 
-            isRefreshing = true;
-            window.location.href = window.location.href; // إعادة تحميل الصفحة مع مؤشر التحميل الافتراضي
-        }
-    });
-
-    document.addEventListener("touchend", () => {
-        isRefreshing = false;
-    });
-</script>
-        document.addEventListener("DOMContentLoaded", function() {
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    window.addEventListener("touchstart", function(event) {
-        touchStartY = event.touches[0].clientY;
-    });
-
-    window.addEventListener("touchend", function(event) {
-        touchEndY = event.changedTouches[0].clientY;
-        if (touchEndY - touchStartY > 150) { // إذا كان السحب للأسفل أكثر من 150px
-            window.location.reload(); // تحديث الصفحة
-        }
-    });
-});
-
-
+    <script src="script.js"></script>
 </body>
 </html>
