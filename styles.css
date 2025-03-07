@@ -150,3 +150,18 @@ body::before {
     transform: scale(0.95);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
+/* تنسيق الخلفية على الشاشات الكبيرة */
+body {
+    background-image: url('your-background-image.png'); /* استبدلها برابط الخلفية */
+    background-size: cover; /* تجعل الخلفية تغطي الشاشة بالكامل */
+    background-position: center; /* محاذاة الخلفية في المنتصف */
+    background-repeat: no-repeat; /* منع تكرار الصورة */
+}
+
+/* تحسين الخلفية على شاشات الموبايل */
+@media (max-width: 768px) {
+    body {
+        background-size: contain; /* تعديل الحجم ليكون مناسبًا للشاشة */
+        background-position: top center; /* ضبط محاذاة الخلفية */
+    }
+}
