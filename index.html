@@ -11,6 +11,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </head>
 <body>
+    <audio id="bg-music" autoplay>
+    <source src="https://github.com/Zeyadfit0/Zeyad_fit0/blob/main/audio.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+</audio>
     <div class="container">
         <div class="profile">
             <img src="profile.jpg" alt="صورة شخصية" class="profile-img">
@@ -36,25 +40,16 @@
     </div>
 
     <script src="script.js"></script>
-       document.addEventListener("DOMContentLoaded", function() {
-    let touchStartY = 0;
-    let touchEndY = 0;
-    let loadingIndicator = document.getElementById("loading-indicator");
+       <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var audio = document.getElementById("bg-music");
 
-    window.addEventListener("touchstart", function(event) {
-        touchStartY = event.touches[0].clientY;
-    });
-
-    window.addEventListener("touchend", function(event) {
-        touchEndY = event.changedTouches[0].clientY;
-        if (touchEndY - touchStartY > 150) { // إذا كان السحب للأسفل أكثر من 150px
-            loadingIndicator.style.display = "block"; // إظهار رمز التحميل
-            setTimeout(function() {
-                window.location.reload(); // تحديث الصفحة بعد قليل
-            }, 500);
-        }
-    });
+    // تشغيل الصوت بعد أول تفاعل مع المستخدم
+    document.body.addEventListener("click", function() {
+        audio.play();
+    }, { once: true });
 });
- 
+</script>
+
 </body>
 </html>
