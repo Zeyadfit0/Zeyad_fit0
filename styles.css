@@ -16,11 +16,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: auto;  /* 🔥 بدل hidden بـ auto لتفعيل التمرير */
+    overflow: hidden;
     position: relative;
-    -webkit-overflow-scrolling: touch; /* 🔥 لتحسين السحب في الهواتف */
-}
-
 }
 
 /* جعل حرف Z يملأ الخلفية بالكامل */
@@ -153,35 +150,35 @@ body::before {
     transform: scale(0.95);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-/* تنسيق الخلفية على الشاشات الكبيرة */
+/* ضبط الخلفية لتكون متجاوبة مع الموبايل */
 body {
-    background-image: url('your-background-image.png'); /* استبدلها برابط الخلفية */
-    background-size: cover; /* تجعل الخلفية تغطي الشاشة بالكامل */
-    background-position: center; /* محاذاة الخلفية في المنتصف */
-    background-repeat: no-repeat; /* منع تكرار الصورة */
+    background: #2c2c2c; /* لون رمادي غامق */
+    background-image: url('background.png'); /* تأكد من اسم الملف */
+    background-size: cover; /* يجعل الخلفية تغطي الشاشة بالكامل */
+    background-position: center; /* يضمن أن الخلفية تظهر بشكل مناسب */
+    background-attachment: fixed; /* يجعل الخلفية ثابتة عند التمرير */
 }
 
-/* تحسين الخلفية على شاشات الموبايل */
-@media (max-width: 768px) {
-    body {
-        background-size: contain; /* تعديل الحجم ليكون مناسبًا للشاشة */
-        background-position: top center; /* ضبط محاذاة الخلفية */
-    }
-html, body {
-    height: 100%;
-    overflow-y: auto; /* يسمح بالتمرير بدون تغيير الخلفية */
-    -webkit-overflow-scrolling: touch; /* تحسين التمرير في الهواتف */
-    background: #444; /* إعادة الخلفية الأصلية */
-}
-
+/* تأكد من أن حرف الـ Z في الخلفية لا يؤثر على التصميم */
 body::before {
-    content: "Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z"; /* إذا كنت تستخدم هذه الخلفية */
+    content: 'Z';
+    font-size: 50vh; /* يجعل الحجم كبير جداً */
+    color: rgba(255, 255, 255, 0.05); /* لون شفاف */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 15vw;
     font-weight: bold;
-    opacity: 0.1;
-    pointer-events: none;
+    z-index: -1; /* يضمن أنه لن يؤثر على العناصر الأخرى */
+}
+
+/* تحسين التصميم على الشاشات الصغيرة */
+@media screen and (max-width: 768px) {
+    body {
+        background-size: contain; /* يجعل الخلفية تتناسب مع حجم الشاشة */
+    }
+
+    body::before {
+        font-size: 30vh; /* تصغير حجم حرف Z ليكون مناسب للموبايل */
+    }
 }
