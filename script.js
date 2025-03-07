@@ -26,3 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+let startY = 0;
+
+document.addEventListener("touchstart", function(event) {
+    startY = event.touches[0].clientY;
+});
+
+document.addEventListener("touchend", function(event) {
+    let endY = event.changedTouches[0].clientY;
+    if (endY - startY > 100) { // إذا كان السحب للأسفل أكثر من 100px
+        location.reload(); // إعادة تحميل الصفحة
+    }
+});
