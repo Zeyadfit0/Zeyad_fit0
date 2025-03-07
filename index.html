@@ -8,37 +8,7 @@
     <link rel="icon" href="logo.icon.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
-    <div id="refreshSpinner">🔄 تحديث...</div>
-    <script>
-    let startY = 0; 
-    let isRefreshing = false; 
-    let spinner = document.createElement("div"); 
-    spinner.id = "refreshSpinner";
-    spinner.innerHTML = "🔄 تحديث...";
-    document.body.appendChild(spinner); // إضافة العنصر للصفحة
-
-    document.addEventListener("touchstart", (e) => {
-        if (window.scrollY === 0) { 
-            startY = e.touches[0].clientY;
-        }
-    });
-
-    document.addEventListener("touchmove", (e) => {
-        let moveY = e.touches[0].clientY;
-        if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) { 
-            isRefreshing = true;
-            spinner.style.display = "block"; // إظهار علامة التحميل
-            setTimeout(() => {
-                location.reload(); // إعادة تحميل الصفحة بعد لحظات
-            }, 1000);
-        }
-    });
-
-    document.addEventListener("touchend", () => {
-        isRefreshing = false;
-    });
-</script>
-
+    
 </head>
 <body>
     <div class="container">
