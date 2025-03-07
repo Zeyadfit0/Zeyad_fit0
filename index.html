@@ -8,6 +8,29 @@
     <link rel="icon" href="logo.icon.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <script>
+    let startY = 0; // تخزين نقطة البداية للمس
+    let isRefreshing = false; // لتجنب التحديث المتكرر
+
+    document.addEventListener("touchstart", (e) => {
+        if (window.scrollY === 0) { // التأكد أن المستخدم في أعلى الصفحة
+            startY = e.touches[0].clientY;
+        }
+    });
+
+    document.addEventListener("touchmove", (e) => {
+        let moveY = e.touches[0].clientY;
+        if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) { // إذا سحب لأسفل أكثر من 100px
+            isRefreshing = true;
+            location.reload(); // إعادة تحميل الصفحة
+        }
+    });
+
+    document.addEventListener("touchend", () => {
+        isRefreshing = false;
+    });
+</script>
+
 </head>
 <body>
     <div class="container">
