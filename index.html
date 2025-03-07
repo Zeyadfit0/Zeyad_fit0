@@ -36,5 +36,25 @@
     </div>
 
     <script src="script.js"></script>
+       document.addEventListener("DOMContentLoaded", function() {
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let loadingIndicator = document.getElementById("loading-indicator");
+
+    window.addEventListener("touchstart", function(event) {
+        touchStartY = event.touches[0].clientY;
+    });
+
+    window.addEventListener("touchend", function(event) {
+        touchEndY = event.changedTouches[0].clientY;
+        if (touchEndY - touchStartY > 150) { // إذا كان السحب للأسفل أكثر من 150px
+            loadingIndicator.style.display = "block"; // إظهار رمز التحميل
+            setTimeout(function() {
+                window.location.reload(); // تحديث الصفحة بعد قليل
+            }, 500);
+        }
+    });
+});
+ 
 </body>
 </html>
