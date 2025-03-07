@@ -167,11 +167,21 @@ body {
         background-size: contain; /* تعديل الحجم ليكون مناسبًا للشاشة */
         background-position: top center; /* ضبط محاذاة الخلفية */
     }
-html {
-    overflow: auto; /* 🔥 يسمح بالتمرير لكن لا يغير تصميم الـ body */
-    -webkit-overflow-scrolling: touch; /* 🔥 تحسين التمرير في الهواتف */
+html, body {
+    height: 100%;
+    overflow-y: auto; /* يسمح بالتمرير بدون تغيير الخلفية */
+    -webkit-overflow-scrolling: touch; /* تحسين التمرير في الهواتف */
+    background: #444; /* إعادة الخلفية الأصلية */
 }
 
-body {
-    overflow: hidden; /* ✅ يحافظ على الخلفية كما هي */
+body::before {
+    content: "Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z Z"; /* إذا كنت تستخدم هذه الخلفية */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15vw;
+    font-weight: bold;
+    opacity: 0.1;
+    pointer-events: none;
 }
