@@ -48,7 +48,7 @@
         let moveY = e.touches[0].clientY;
         if (moveY - startY > 100 && window.scrollY === 0 && !isRefreshing) { 
             isRefreshing = true;
-            location.reload(); 
+            window.location.href = window.location.href; // إعادة تحميل الصفحة مع مؤشر التحميل الافتراضي
         }
     });
 
